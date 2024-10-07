@@ -1,3 +1,7 @@
+using MongoDB.Driver;
+using MongoDB.Bson;
+
+
 public class MongoDBService
 {
     private readonly IMongoClient _client;

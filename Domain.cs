@@ -1,3 +1,5 @@
+using MongoDB.Bson;
+
 public class Produto
 {
     public ObjectId Id { get; set; }

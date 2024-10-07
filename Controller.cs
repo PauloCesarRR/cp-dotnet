@@ -1,3 +1,6 @@
+
+using Microsoft.AspNetCore.Mvc;
+
 [ApiController]
 [Route("[controller]")]
 public class ProdutosController : ControllerBase
@@ -39,7 +42,7 @@ public class ProdutosController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(string id, Produto produto)
     {
-        if (id != produto.Id)
+        if (id != produto.Id.ToString())
         {
             return BadRequest();
         }

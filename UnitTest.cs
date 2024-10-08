@@ -2,6 +2,7 @@ using Xunit;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace MeuProjetoDeTeste
 {
@@ -20,18 +21,18 @@ namespace MeuProjetoDeTeste
         {
             var response = await _client.GetAsync("/produtos");
 
-            response.EnsureSuccessStatusCode(); 
+            response.EnsureSuccessStatusCode();
             var produtos = await response.Content.ReadFromJsonAsync<List<Produto>>();
 
- 
-            Assert.NotNull(produtos); 
-            Assert.NotEmpty(produtos); 
+
+            Assert.NotNull(produtos);
+            Assert.NotEmpty(produtos);
         }
 
         [Fact]
         public async Task GetById_ShouldReturnCorrectProduct()
         {
-            /
+            
             var productId = "123"; 
             var response = await _client.GetAsync($"/produtos/{productId}");
 
@@ -40,7 +41,7 @@ namespace MeuProjetoDeTeste
             var produto = await response.Content.ReadFromJsonAsync<Produto>();
 
             Assert.NotNull(produto);
-            Assert.Equal(productId, produto.Id); 
+            Assert.Equal(productId, produto.Id.ToString()); 
         }
 
         [Fact]
